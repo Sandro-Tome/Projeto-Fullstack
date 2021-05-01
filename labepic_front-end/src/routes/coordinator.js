@@ -1,4 +1,4 @@
-export const goToLogin = (history) => {
+export const goToLoginPage = (history) => {
     history.push("/login")
 }
 
