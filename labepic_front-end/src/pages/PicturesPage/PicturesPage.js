@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "@material-ui/core";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 export const PicturesPage = () => {
+  useProtectedPage()
   return (
     <div>
       <h1>PicturesPage</h1>
