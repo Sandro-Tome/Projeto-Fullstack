@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SignUpPage = () => {
+export const SignUpPage = ({setRightButton}) => {
   useUnprotectedPage()
   const classes = useStyles();
   const history = useHistory();
@@ -54,9 +54,10 @@ export const SignUpPage = () => {
     password: "",
     nickname: "",
   });
+  
   const onSubmitForm = (event) => {
     event.preventDefault();
-    signUp(body, clear, history)
+    signUp(body, clear, history, setRightButton)
   };
 
   return (
