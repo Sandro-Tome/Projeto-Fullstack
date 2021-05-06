@@ -44,14 +44,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LoginPage = () => {
+export const LoginPage = ({setRightButton}) => {
   useUnprotectedPage()
   const classes = useStyles();
   const history = useHistory()
   const [body, onChange, clear] = useForm({email:"", password:""})
+  
   const onSubmitForm = (event) => {
     event.preventDefault()
-    login(body, clear, history)
+    login(body, clear, history, setRightButton)
   }
   
   return (
