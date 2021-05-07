@@ -1,18 +1,44 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { AddImageButton, ImagesListContainer } from "./styled";
+import ImageCard from "../../components/ImageCard/ImageCard";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/urls";
+import Add from "@material-ui/icons/Add"
+import { goToAddPicturesPage } from "../../routes/coordinator";
+import { useHistory } from "react-router-dom";
 
 export const PicturesPage = () => {
-  useProtectedPage()
+  useProtectedPage();
+  const history = useHistory()
+  const images = useRequestData([], `${BASE_URL}image/all`);
+
+  const onClickCard = () => {
+
+  }
+
+  console.log(images);
+
+  const cards = images.map((image) => {
+    return (
+      <ImageCard 
+        key={image.id}
+        image={image.file}
+        subtitle={image.subtitle}
+        onClick={onClickCard}
+      />
+    );
+  });
+
   return (
-    <div>
-      <h1>PicturesPage</h1>
-      <Button variant="contained" color="primary">
-        Primary
-      </Button>
-      <Button variant="contained" color="secondary">
-        Secondary
-      </Button>
-    </div>
+    <ImagesListContainer>
+      {cards}
+      <AddImageButton
+        color="secondary"
+        onClick={() => goToAddPicturesPage(history)}
+      >
+        <Add/>
+      </AddImageButton>
+    </ImagesListContainer>
   );
 };

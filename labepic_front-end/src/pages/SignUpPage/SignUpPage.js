@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     height: "875px",
     position: "absolute",
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage: "url(https://picsum.photos/1920/1080)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
