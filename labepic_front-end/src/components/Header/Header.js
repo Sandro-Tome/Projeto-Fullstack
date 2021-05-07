@@ -21,7 +21,7 @@ const Header = ({rightButton, setRightButton}) => {
       setRightButton("Login")
       goToLoginPage(history)
     } else {
-      goToLoginPage()
+      goToLoginPage(history)
     }
   }
 
