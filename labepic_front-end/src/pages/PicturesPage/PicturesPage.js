@@ -5,7 +5,7 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import Add from "@material-ui/icons/Add"
-import { goToAddPicturesPage } from "../../routes/coordinator";
+import { goToAddPicturesPage, goToPicturesDetailPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 
 export const PicturesPage = () => {
@@ -13,8 +13,8 @@ export const PicturesPage = () => {
   const history = useHistory()
   const images = useRequestData([], `${BASE_URL}image/all`);
 
-  const onClickCard = () => {
-
+  const onClickCard = (id) => {
+    goToPicturesDetailPage(history, id)
   }
 
   console.log(images);
@@ -25,7 +25,7 @@ export const PicturesPage = () => {
         key={image.id}
         image={image.file}
         subtitle={image.subtitle}
-        onClick={onClickCard}
+        onClick={() => onClickCard(image.id)}
       />
     );
   });
